@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets
+from . serializers import PlayersSerializers
+from . models import players
 
-def index(request):
-    return HttpResponse('Hello World, this is my first view response')
-
-def siddhu(request):
-    return HttpResponse('Hello worald')
+class PlayerView(viewsets.ModelViewSet):
+    queryset = players.objects.all()
+    serializer_class = PlayersSerializers
 
 # Create your views here.
 
